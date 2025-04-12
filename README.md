@@ -61,6 +61,7 @@ W aplikacji architektura została utworzony w ten sposób, że wszystkie element
 - `Device Preview Plus` - Idealna paczka do szybkiego testowania widoków na różnych rozdzielczościach urządzeń (poniżej ss programu)
 - `Uuid` - Wykorzystywana do generowania unikalnych identyfikatorów
 - `FlutterGen` - Do automatycznego generowania ścieżek assetów
+- `EasyLocalization` - Przechowywanie stringów (opcja rozsz. o inne języki)
 
 ## Offtopic
 Lista produktów została zapożyczona (zdjęcia, tytuł itp.) ze strony internetowej Amazonu 😁
