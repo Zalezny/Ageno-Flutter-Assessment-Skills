@@ -4,10 +4,15 @@ Przykładowa aplikacja sklepu mobilnego z obsługą logiki koszyka. Dodatkowo zo
 - Rabaty
 - Kod promocyjny
 - Możliwość zwiększania ilości artykułu (usuwanie artykułu opcją odejmowania ilości w koszyku)
+- Kategorie
+
+W aplikacji przejście do koszyka zostało zaimplementowane po kliknięciu w sumę produktów w koszyku. Dodawanie do koszyka odbywa się poprzez w górnym prawym rogu produktu ikonę koszyka.
+
+Aplikacja była testowana na platformach Android oraz iOS oraz urządzeniu fizycznym (Xiaomi POCO X3). Aby przetestować responsywność aplikacji, warto załączyć DevicePreview (w pliku `main.dart` zamienić pole `enabled` na true)
 
 ## 🛠️ Instalacja
 
-Projekt można pozyskać poprzez plik .apk lub też jego kompilację. Jeśli po pobraniu repozytorium pojawiłyby się jakiekolwiek błędy można skorzystać z danych komend:
+Projekt można pozyskać poprzez plik .apk (w folderze `/apk`) lub też przez jego kompilację. Jeśli po pobraniu repozytorium pojawiłyby się jakiekolwiek błędy można skorzystać z danych komend:
 
 Budowanie projektu: 
 ```bash
@@ -58,9 +63,49 @@ W aplikacji architektura została utworzony w ten sposób, że wszystkie element
 - `FlutterGen` - Do automatycznego generowania ścieżek assetów
 
 ## Offtopic
-Lista produktów została zapożyczona (zdjęcia, tytuł itp.) z Amazonu 
+Lista produktów została zapożyczona (zdjęcia, tytuł itp.) ze strony internetowej Amazonu 😁
 
 ## 📱 Zdjęcia aplikacji
+
+
+### Iphone 12 Pro Max 428x926
+
+<div style="display: flex; justify-content: space-between;">
+  <img src="https://github.com/user-attachments/assets/06ffd6c5-6a0f-4a2d-8800-6f1577da1330" width="48%" />
+  <img src="https://github.com/user-attachments/assets/c21effc3-45fd-4894-92d7-d4f58ef982c5" width="48%" />
+</div>
+
+<div style="display: flex; justify-content: space-between;">
+  <img src="https://github.com/user-attachments/assets/b63e7efb-da51-47ea-a8ba-18ec0feb7b7b" width="48%" />
+  <img src="https://github.com/user-attachments/assets/8d969908-0c62-4ff1-8ba2-965d1ff84829" width="48%" />
+</div>
+
+<div style="display: flex; justify-content: space-between;">
+  <img src="https://github.com/user-attachments/assets/b8cb204a-5bae-4b79-b7c5-adafafaeb247" width="48%" />
+</div>
+
+### Tablet 800x1280 Android
+<div style="display: flex; justify-content: space-between;">
+  <img src="https://github.com/user-attachments/assets/48fd0ff5-f423-47fd-9dc5-26b00e4946f8" width="48%" />
+  <img src="https://github.com/user-attachments/assets/451e63ea-e279-41e8-b9f3-923d9a81b932" width="48%" />
+</div>
+
+<div style="display: flex; justify-content: space-between;">
+  <img src="https://github.com/user-attachments/assets/7b2d9c41-e6a5-417f-8a1d-8156dfa18630" width="48%" />
+  <img src="https://github.com/user-attachments/assets/514de45d-357f-4f6d-96bc-e114fa75c997" width="48%" />
+</div>
+
+### Mały smartfon 360x640 Android
+<div style="display: flex; justify-content: space-between;">
+  <img src="https://github.com/user-attachments/assets/994a3340-e894-4f7e-a4cc-12dcf4211c42" width="48%" />
+  <img src="https://github.com/user-attachments/assets/954c6e7e-82c8-459f-9f2d-f0b802be20a8" width="48%" />
+</div>
+
+<div style="display: flex; justify-content: space-between;">
+  <img src="https://github.com/user-attachments/assets/d2f56cce-c26e-4be4-b294-7e575a2b79a6" width="48%" />
+  <img src="https://github.com/user-attachments/assets/99e4604e-c69b-4ca6-b338-2159377f3401" width="48%" />
+</div>
+
 
 
 
