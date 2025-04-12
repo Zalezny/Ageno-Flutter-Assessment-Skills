@@ -12,6 +12,10 @@ _Product _$ProductFromJson(Map<String, dynamic> json) => _Product(
   price: (json['price'] as num).toDouble(),
   imageUrl: json['imageUrl'] as String,
   description: json['description'] as String?,
+  promoCode: json['promoCode'] as String?,
+  promoCodeDiscount: (json['promoCodeDiscount'] as num?)?.toDouble(),
+  discountPercentage: (json['discountPercentage'] as num?)?.toDouble(),
+  isNew: json['isNew'] as bool?,
   brand: json['brand'] as String?,
   category: $enumDecodeNullable(_$CategoryTypeEnumMap, json['category']),
 );
@@ -22,6 +26,10 @@ Map<String, dynamic> _$ProductToJson(_Product instance) => <String, dynamic>{
   'price': instance.price,
   'imageUrl': instance.imageUrl,
   'description': instance.description,
+  'promoCode': instance.promoCode,
+  'promoCodeDiscount': instance.promoCodeDiscount,
+  'discountPercentage': instance.discountPercentage,
+  'isNew': instance.isNew,
   'brand': instance.brand,
   'category': _$CategoryTypeEnumMap[instance.category],
 };

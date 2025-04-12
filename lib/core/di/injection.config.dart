@@ -16,6 +16,8 @@ import '../../features/product/data/repositories/product_repository_impl.dart'
     as _i1040;
 import '../../features/product/domain/repositories/product_repository.dart'
     as _i39;
+import '../../features/product/domain/usecases/get_product_by_id.dart' as _i894;
+import '../../features/product/domain/usecases/get_products.dart' as _i279;
 
 extension GetItInjectableX on _i174.GetIt {
   // initializes the registration of main-scope dependencies inside of GetIt
@@ -26,6 +28,12 @@ extension GetItInjectableX on _i174.GetIt {
     final gh = _i526.GetItHelper(this, environment, environmentFilter);
     gh.lazySingleton<_i39.ProductRepository>(
       () => _i1040.ProductRepositoryImpl(),
+    );
+    gh.factory<_i279.GetProducts>(
+      () => _i279.GetProducts(gh<_i39.ProductRepository>()),
+    );
+    gh.factory<_i894.GetProductById>(
+      () => _i894.GetProductById(gh<_i39.ProductRepository>()),
     );
     return this;
   }

@@ -13,6 +13,10 @@ abstract class Product with _$Product {
     required double price,
     required String imageUrl,
     String? description,
+    String? promoCode,
+    double? promoCodeDiscount,
+    double? discountPercentage,
+    bool? isNew,
     String? brand,
     CategoryType? category,
   }) = _Product;

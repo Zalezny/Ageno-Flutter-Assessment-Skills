@@ -7,7 +7,6 @@ import '../../../../core/enums/category_type.dart';
 
 @LazySingleton(as: ProductRepository)
 class ProductRepositoryImpl extends ProductRepository {
-
   /// Mock data for products (borrowed from Amazon)
   final List<Product> _products = [
     Product(
@@ -16,6 +15,8 @@ class ProductRepositoryImpl extends ProductRepository {
       price: 1299.99,
       imageUrl: 'https://m.media-amazon.com/images/I/51HCs2mVKsL._AC_SL1500_.jpg',
       description: 'Słuchawkami AirPods Pro dyryguje stworzony przez Apple czip H2.',
+      discountPercentage: 0.19,
+      isNew: true,
       brand: 'Apple',
       category: CategoryType.headphones,
     ),
@@ -25,6 +26,9 @@ class ProductRepositoryImpl extends ProductRepository {
       price: 89.99,
       imageUrl: 'https://m.media-amazon.com/images/I/51s68TPVLpL._AC_SL1500_.jpg',
       description: 'Potężny bas: całkowicie bezprzewodowe słuchawki douszne soundcore P20i',
+      promoCode: 'SOUNDCORE10',
+      promoCodeDiscount: 0.1,
+      isNew: false,
       brand: 'Anker',
       category: CategoryType.headphones,
     ),
@@ -34,6 +38,10 @@ class ProductRepositoryImpl extends ProductRepository {
       price: 3004.23,
       imageUrl: 'https://m.media-amazon.com/images/I/51QLn7JMdNL._AC_UL480_FMwebp_QL65_.jpg',
       description: 'Aktywny głośnik z regulatorami głośności, basów i wysokich tonów',
+      promoCode: 'EDIFIER10',
+      promoCodeDiscount: 0.1,
+      discountPercentage: 0.3,
+      isNew: true,
       brand: 'Edifier',
       category: CategoryType.speakers,
     ),
@@ -58,14 +66,15 @@ class ProductRepositoryImpl extends ProductRepository {
   ];
 
   @override
-  Future<Product> getProductById(String id) {
-    // TODO: implement getProductById
-    throw UnimplementedError();
+  Future<Product?> getProductById(String id) async {
+    await Future.delayed(const Duration(milliseconds: 150));
+    final productIndex = _products.indexWhere((product) => product.id == id);
+    return productIndex != -1 ? _products[productIndex] : null;
   }
 
   @override
-  Future<List<Product>> getProducts() {
-    // TODO: implement getProducts
-    throw UnimplementedError();
+  Future<List<Product>> getProducts() async {
+    await Future.delayed(const Duration(milliseconds: 300));
+    return _products;
   }
 }
