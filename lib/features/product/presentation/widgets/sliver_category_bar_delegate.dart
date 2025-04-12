@@ -9,7 +9,11 @@ class SliverCategoryBarDelegate extends SliverPersistentHeaderDelegate {
   SliverCategoryBarDelegate({required this.height, required this.products});
 
   @override
-  Widget build(BuildContext context, double shrinkOffset, bool overlapsContent) {
+  Widget build(
+    BuildContext context,
+    double shrinkOffset,
+    bool overlapsContent,
+  ) {
     return CategoryBar(height: height, products: products);
   }
 
@@ -21,6 +25,7 @@ class SliverCategoryBarDelegate extends SliverPersistentHeaderDelegate {
 
   @override
   bool shouldRebuild(covariant SliverPersistentHeaderDelegate oldDelegate) {
-    return oldDelegate is SliverCategoryBarDelegate && (oldDelegate.height != height || oldDelegate.products != products);
+    return oldDelegate is SliverCategoryBarDelegate &&
+        (oldDelegate.height != height || oldDelegate.products != products);
   }
 }

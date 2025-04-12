@@ -9,9 +9,14 @@ part 'cart_item.g.dart';
 abstract class CartItem with _$CartItem {
   const CartItem._();
 
-  const factory CartItem({required String id, required Product product, required int quantity}) = _CartItem;
+  const factory CartItem({
+    required String id,
+    required Product product,
+    required int quantity,
+  }) = _CartItem;
 
-  factory CartItem.fromJson(Map<String, dynamic> json) => _$CartItemFromJson(json);
+  factory CartItem.fromJson(Map<String, dynamic> json) =>
+      _$CartItemFromJson(json);
 
   double get totalPrice => product.price * quantity;
 }

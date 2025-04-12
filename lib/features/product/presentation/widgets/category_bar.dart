@@ -12,7 +12,12 @@ class CategoryBar extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final categories = products.map((product) => product.category).whereType<CategoryType>().toSet().toList();
+    final categories =
+        products
+            .map((product) => product.category)
+            .whereType<CategoryType>()
+            .toSet()
+            .toList();
     final selectedCategory = ref.watch(selectedCategoryProvider);
 
     return Container(
@@ -22,29 +27,55 @@ class CategoryBar extends ConsumerWidget {
         scrollDirection: Axis.horizontal,
         padding: const EdgeInsets.symmetric(horizontal: 8),
         children: [
-          _buildCategoryItem(context, ref, CategoryType.all, isSelected: selectedCategory == null || selectedCategory == CategoryType.all),
-          ...categories.map((category) => _buildCategoryItem(context, ref, category, isSelected: selectedCategory == category)),
+          _buildCategoryItem(
+            context,
+            ref,
+            CategoryType.all,
+            isSelected:
+                selectedCategory == null ||
+                selectedCategory == CategoryType.all,
+          ),
+          ...categories.map(
+            (category) => _buildCategoryItem(
+              context,
+              ref,
+              category,
+              isSelected: selectedCategory == category,
+            ),
+          ),
         ],
       ),
     );
   }
 
-  Widget _buildCategoryItem(BuildContext context, WidgetRef ref, CategoryType category, {bool isSelected = false}) {
+  Widget _buildCategoryItem(
+    BuildContext context,
+    WidgetRef ref,
+    CategoryType category, {
+    bool isSelected = false,
+  }) {
     return GestureDetector(
       onTap: () {
-        ref.read(selectedCategoryProvider.notifier).state = category == CategoryType.all ? null : category;
+        ref.read(selectedCategoryProvider.notifier).state =
+            category == CategoryType.all ? null : category;
       },
       child: Container(
         margin: const EdgeInsets.symmetric(horizontal: 4, vertical: 8),
         padding: const EdgeInsets.symmetric(horizontal: 16),
         decoration: BoxDecoration(
-          color: isSelected ? Theme.of(context).colorScheme.primary : Colors.grey.shade200,
+          color:
+              isSelected
+                  ? Theme.of(context).colorScheme.primary
+                  : Colors.grey.shade200,
           borderRadius: BorderRadius.circular(8),
         ),
         child: Center(
           child: Text(
             category.label,
-            style: TextStyle(color: isSelected ? Colors.white : Colors.black87, fontWeight: isSelected ? FontWeight.bold : FontWeight.normal),
+            style: TextStyle(
+              color: isSelected ? Colors.white : Colors.black87,
+              fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
+            ),
           ),
         ),
       ),

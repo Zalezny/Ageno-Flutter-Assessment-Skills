@@ -18,7 +18,10 @@ final productsProvider = FutureProvider<List<Product>>((ref) async {
   return await getProductsUseCase();
 });
 
-final productProvider = FutureProvider.family<Product?, String>((ref, id) async {
+final productProvider = FutureProvider.family<Product?, String>((
+  ref,
+  id,
+) async {
   final getProductByIdUseCase = ref.watch(getProductByIdUseCaseProvider);
   return await getProductByIdUseCase(id);
 });
