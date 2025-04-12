@@ -1,6 +1,7 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:uuid/uuid.dart';
 
+import '../../../../core/di/injection.dart';
 import '../../../product/domain/entities/product.dart';
 import '../../domain/entities/cart_item.dart';
 import 'cart_state.dart';
@@ -9,7 +10,7 @@ part 'cart_provider.g.dart';
 
 @Riverpod(keepAlive: true)
 class Cart extends _$Cart {
-  final _uuid = const Uuid();
+  final _uuid = getIt<Uuid>();
   final List<CartItem> _cartItems = [];
   String? _appliedPromoCode;
   bool _isPromoCodeValid = false;
@@ -217,5 +218,3 @@ class Cart extends _$Cart {
     }
   }
 }
-
-

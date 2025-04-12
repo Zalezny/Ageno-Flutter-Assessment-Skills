@@ -37,7 +37,6 @@ class CartScreen extends ConsumerWidget {
   ) {
     return asyncCartItems.when(
       data: (cartItems) {
-        print('cartItems: $cartItems');
         if (cartItems.isEmpty) {
           return Center(child: Text(LocaleKeys.emptyCart.tr()));
         }

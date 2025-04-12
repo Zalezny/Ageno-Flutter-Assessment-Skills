@@ -16,30 +16,30 @@ class CartTotalSection extends ConsumerWidget {
     final asyncCartTotal = ref.watch(cartProvider).total;
     final asyncDiscountedTotal = ref.watch(cartProvider).discountedTotal;
 
-    Widget buildLoading() =>
-        useCenter
-            ? const Center(child: CircularProgressIndicator())
-            : const CircularProgressIndicator();
-
-    Widget buildError() =>
-        useCenter
-            ? Center(child: Text(LocaleKeys.cartTotal.tr()))
-            : Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Text(LocaleKeys.cartTotal.tr()),
-            );
-
     return asyncCartTotal.when(
       data:
           (total) => asyncDiscountedTotal.when(
             data:
                 (discountedTotal) =>
                     CartSummary(total: total, discountedTotal: discountedTotal),
-            loading: () => buildLoading(),
-            error: (_, __) => buildError(),
+            loading: () => _buildLoading(),
+            error: (_, __) => _buildError(),
           ),
-      loading: () => buildLoading(),
-      error: (_, __) => buildError(),
+      loading: () => _buildLoading(),
+      error: (_, __) => _buildError(),
     );
   }
+
+  Widget _buildLoading() =>
+      useCenter
+          ? const Center(child: CircularProgressIndicator())
+          : const CircularProgressIndicator();
+
+  Widget _buildError() =>
+      useCenter
+          ? Center(child: Text(LocaleKeys.cartTotal.tr()))
+          : Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Text(LocaleKeys.cartTotal.tr()),
+          );
 }
