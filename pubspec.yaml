@@ -1,6 +1,6 @@
 name: ageno_flutter_assessment_skills
 description: "A Flutter cart project."
-publish_to: 'none'
+publish_to: "none"
 
 version: 1.0.0+1
 
@@ -10,6 +10,10 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  intl: ^0.19.0
+  easy_localization: ^3.0.7
 
   cupertino_icons: ^1.0.8
   flutter_riverpod: ^2.6.1
@@ -32,10 +36,9 @@ dev_dependencies:
   flutter_gen_runner: ^5.10.0
   injectable_generator: ^2.7.0
 
-
 flutter:
-
   uses-material-design: true
 
   assets:
     - assets/images/
+    - assets/translations/

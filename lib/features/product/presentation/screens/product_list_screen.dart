@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 import '../../../../core/enums/category_type.dart';
 import '../../../../gen/assets.gen.dart';
+import '../../../../generated/locale_keys.g.dart';
 import '../../../cart/presentation/widgets/cart_button.dart';
 import '../../domain/entities/product.dart';
 import '../providers/product_provider.dart';
@@ -20,7 +22,9 @@ final filteredProductsProvider = Provider<List<Product>>((ref) {
       if (selectedCategory == null || selectedCategory == CategoryType.all) {
         return products;
       } else {
-        return products.where((product) => product.category == selectedCategory).toList();
+        return products
+            .where((product) => product.category == selectedCategory)
+            .toList();
       }
     },
     loading: () => [],
@@ -64,8 +68,11 @@ class _ProductListScreenState extends ConsumerState<ProductListScreen> {
 
   void _onScroll() {
     if (_scrollController.hasClients) {
-      final bool isCollapsed = _scrollController.offset > _imageHeight - _collapsedOffset;
-      final bool showTrolley = _scrollController.offset > _imageHeight + _categoryBarHeight + _collapsedOffset;
+      final bool isCollapsed =
+          _scrollController.offset > _imageHeight - _collapsedOffset;
+      final bool showTrolley =
+          _scrollController.offset >
+          _imageHeight + _categoryBarHeight + _collapsedOffset;
       if (isCollapsed != _isCollapsed) {
         setState(() {
           _isCollapsed = isCollapsed;
@@ -90,17 +97,21 @@ class _ProductListScreenState extends ConsumerState<ProductListScreen> {
       body: asyncProducts.when(
         data: (products) => _buildProductList(context, products),
         loading: () => const Center(child: CircularProgressIndicator()),
-        error: (error, stackTrace) => Center(child: Text('Wystąpił błąd: $error')),
+        error:
+            (error, stackTrace) => Center(
+              child: Text(LocaleKeys.error.tr(args: [error.toString()])),
+            ),
       ),
     );
   }
 
   Widget _buildProductList(BuildContext context, List<Product> products) {
     if (products.isEmpty) {
-      return const Center(child: Text('Brak produktów do wyświetlenia'));
+      return Center(child: Text(LocaleKeys.noProducts.tr()));
     }
 
-    final isLandscape = MediaQuery.of(context).orientation == Orientation.landscape;
+    final isLandscape =
+        MediaQuery.of(context).orientation == Orientation.landscape;
     final filteredProducts = ref.watch(filteredProductsProvider);
     final crossAxisSpacing = isLandscape ? 20 : 10;
     final mainAxisSpacing = isLandscape ? 20 : 10;
@@ -129,10 +140,11 @@ class _ProductListScreenState extends ConsumerState<ProductListScreen> {
                     Padding(
                       padding: EdgeInsets.all(8),
                       child: Text(
-                        "Elektronika",
-                        style: Theme.of(
-                          context,
-                        ).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold, color: _isCollapsed ? Colors.black : Colors.white),
+                        LocaleKeys.electronics.tr(),
+                        style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                          fontWeight: FontWeight.bold,
+                          color: _isCollapsed ? Colors.black : Colors.white,
+                        ),
                       ),
                     ),
                     if (_showTrolley) CartButton(),
@@ -141,13 +153,26 @@ class _ProductListScreenState extends ConsumerState<ProductListScreen> {
               ),
               background: Stack(
                 children: [
-                  Positioned.fill(child: Image.asset(Assets.images.electronicPicture.path, fit: BoxFit.cover)),
-                  Positioned.fill(child: Container(color: Colors.black.withAlpha(85))),
+                  Positioned.fill(
+                    child: Image.asset(
+                      Assets.images.electronicPicture.path,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                  Positioned.fill(
+                    child: Container(color: Colors.black.withAlpha(85)),
+                  ),
                 ],
               ),
             ),
           ),
-          SliverPersistentHeader(pinned: false, delegate: SliverCategoryBarDelegate(height: _categoryBarHeight, products: products)),
+          SliverPersistentHeader(
+            pinned: false,
+            delegate: SliverCategoryBarDelegate(
+              height: _categoryBarHeight,
+              products: products,
+            ),
+          ),
         ];
       },
       body: CustomScrollView(
@@ -160,7 +185,14 @@ class _ProductListScreenState extends ConsumerState<ProductListScreen> {
                   padding: const EdgeInsets.symmetric(horizontal: 8),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [Text("Liczba produktów: ${filteredProducts.length}"), CartButton()],
+                    children: [
+                      Text(
+                        LocaleKeys.productCount.tr(
+                          args: [filteredProducts.length.toString()],
+                        ),
+                      ),
+                      CartButton(),
+                    ],
                   ),
                 ),
               ],
@@ -171,7 +203,8 @@ class _ProductListScreenState extends ConsumerState<ProductListScreen> {
             sliver: SliverGrid(
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: isLandscape ? 4 : 2,
-                childAspectRatio: isLandscape && !isTablet(context) ? 0.35 : 0.4,
+                childAspectRatio:
+                    isLandscape && !isTablet(context) ? 0.35 : 0.4,
                 crossAxisSpacing: crossAxisSpacing.toDouble(),
                 mainAxisSpacing: mainAxisSpacing.toDouble(),
               ),

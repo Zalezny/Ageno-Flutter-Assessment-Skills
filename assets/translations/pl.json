@@ -1,0 +1,38 @@
+{
+  "electronics": "Elektronika",
+  "error": "Wystąpił błąd: {}",
+  "noProducts": "Brak produktów do wyświetlenia",
+  "productCount": "Liczba produktów: {}",
+
+  "cart": "Koszyk",
+  "emptyCart": "Twój koszyk jest pusty",
+  "cartLoadError": "Nie wczytano koszyka z powodu błędu",
+  "cartTotal": "---",
+  "clearCartTitle": "Wyczyścić koszyk?",
+  "clearCartConfirm": "Czy na pewno chcesz usunąć wszystkie produkty z koszyka?",
+  "cancel": "ANULUJ",
+  "clear": "WYCZYŚĆ",
+
+  "itemRemovedFromCart": "{} usunięty z koszyka",
+  "errorRemovingFromCart": "Błąd podczas usuwania z koszyka: {}",
+  "quantity": "Ilość: {}",
+
+  "total": "Suma:",
+  "afterDiscount": "Po rabacie:",
+  "youSave": "Oszczędzasz: {} zł",
+  "orderSuccess": "Zamówienie złożone pomyślnie!",
+  "orderNow": "ZAMÓW TERAZ",
+
+  "itemAddedToCart": "{} dodany do koszyka",
+  "errorAddingToCart": "Błąd podczas dodawania do koszyka: {}",
+
+  "apply": "Zastosuj",
+  "remove": "Usuń",
+  "enterPromoCode": "Wpisz kod promocyjny",
+  "promoCodeApplied": "Kod promocyjny \"{}\" zastosowany",
+  "promoCodeInvalid": "Kod promocyjny \"{}\" jest nieprawidłowy",
+
+  "lowestPriceIn30Days": "Najniższa cena w ciągu ostatnich 30 dni:",
+  "discount": "Rabat: {}%",
+  "promoDiscount": "Kod promocyjny: -{}%"
+}
