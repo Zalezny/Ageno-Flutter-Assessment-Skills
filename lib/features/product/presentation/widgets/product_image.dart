@@ -17,7 +17,8 @@ class ProductImage extends StatelessWidget {
   }
 
   Widget _buildImageContainer(BuildContext context) {
-    return _removeWhiteFromImage(
+    return _replaceWhiteBackground(
+      listofcolors: [const Color(0xffe9e6e1), const Color(0xffe9e6e1)],
       child: Container(
         decoration: BoxDecoration(borderRadius: BorderRadius.circular(4), color: Colors.white),
         padding: const EdgeInsets.all(8),
@@ -82,11 +83,11 @@ class ProductImage extends StatelessWidget {
     return '-${(promoDiscount * 100).toInt()}%';
   }
 
-  Widget _removeWhiteFromImage({required Widget child, List<Color>? listofcolors}) {
+  Widget _replaceWhiteBackground({required Widget child, required List<Color> listofcolors}) {
     return ShaderMask(
       child: child,
       shaderCallback: (Rect bounds) {
-        return LinearGradient(colors: listofcolors ?? [const Color(0xffe9e6e1), const Color(0xffe9e6e1)]).createShader(bounds);
+        return LinearGradient(colors: listofcolors).createShader(bounds);
       },
     );
   }

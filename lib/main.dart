@@ -7,7 +7,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 void main() async {
   await configureDependencies();
 
-  runApp(DevicePreview(builder: (context) => const ProviderScope(child: App())));
+  runApp(DevicePreview(enabled: true, builder: (context) => const ProviderScope(child: App())));
 }
 
 class App extends StatelessWidget {
