@@ -1,16 +1,73 @@
-# ageno_flutter_assessment_skills
+# 🛒 Ageno Flutter Projekt
 
-A new Flutter project.
+Przykładowa aplikacja sklepu mobilnego z obsługą logiki koszyka. Dodatkowo zostały obsłużone takie rzeczy jak:
+- Rabaty
+- Kod promocyjny
+- Możliwość zwiększania ilości artykułu (usuwanie artykułu opcją odejmowania ilości w koszyku)
 
-## Getting Started
+## 🛠️ Instalacja
 
-This project is a starting point for a Flutter application.
+Projekt można pozyskać poprzez plik .apk lub też jego kompilację. Jeśli po pobraniu repozytorium pojawiłyby się jakiekolwiek błędy można skorzystać z danych komend:
 
-A few resources to get you started if this is your first Flutter project:
+Budowanie projektu: 
+```bash
+flutter pub get
+```
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+Budowanie plików generowanych:
+```bash
+flutter pub run build_runner build --delete-conflicting-outputs
+```
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Budowanie opcji językowych (EasyLocalization):
+```bash
+flutter pub run easy_localization:generate --source-dir assets/translations -f keys -o locale_keys.g.dart
+```
+
+## 🧱 Architektura
+
+### 🔹 Feature-first + Clean Architecture
+
+Aplikacja została zorganizowana w podejściu **Feature-first**, gdzie każda funkcjonalność posiada swoją własną strukturę (`data`, `presentation`, `domain`). Takie podejście jest szczególnie skuteczne w większych projektach, jak np. aplikacje e-commerce, ponieważ:
+
+- Ułatwia skalowanie projektu
+- Ogranicza zależności między modułami
+- Ułatwia pracę wielu programistom jednocześnie
+- Łatwiej utrzymać spójność i separację warstw
+
+### 🔹 Warstwy Clean Architecture:
+
+- `domain` – logika biznesowa, interfejsy repozytoriów
+- `data` – implementacje źródeł danych i modeli DTO
+- `presentation` – UI, providery, widżety
+
+### Zarządzanie stanem
+
+Do zarządzania stanem aplikacji wybrałem `Riverpod`. Pierwszym z powodu dlaczego ją wybrałem to jest to, że wcześniej przy rekrutacji wysyłałem mój przykładowy kod wykonany w BLoC (przez co tutaj chciałem wykorzystać inne podejście), a drugim powodem jest to, że paczka podobna jest do zarządzania stanem w Reactcie oraz jeśli będzie trzeba istnieje możliwość wprowadzenia hooksów za pomocą paczki `hooks_riverpod`.
+
+### Opis w praktyce
+
+W aplikacji architektura została utworzony w ten sposób, że wszystkie elementy powiązane z listą produktów posiadają trzy warstwy, gdzie w warstwie `data` przechowywane są zmockowane dane produktów. Elementy powiązane z koszykiem, nie posiadają warstwy `data`, aby nie komplikować implementacji. Całość logiki i przechowywanie stanu dzieje się w Providerze.
+
+## 📦 Wykorzystane paczki i uzasadnienie wyboru
+
+- `Freezed` - Dla łatwego tworzenia modeli i klas oraz ich edycji, co przyspiesza development
+- `Injectable + GetIt` - Paczki wykorzystywane do wstrzykiwania zależności
+- `Device Preview Plus` - Idealna paczka do szybkiego testowania widoków na różnych rozdzielczościach urządzeń (poniżej ss programu)
+- `Uuid` - Wykorzystywana do generowania unikalnych identyfikatorów
+- `FlutterGen` - Do automatycznego generowania ścieżek assetów
+
+## Offtopic
+Lista produktów została zapożyczona (zdjęcia, tytuł itp.) z Amazonu 
+
+## 📱 Zdjęcia aplikacji
+
+
+
+
+
+
+
+
+
+
