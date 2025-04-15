@@ -1,4 +1,5 @@
-# 🛒 Ageno Flutter Projekt
+# 🛒 Sklep internetowy z logiką koszyka
+(Ageno-Flutter-Assessment-Skills)
 
 Przykładowa aplikacja sklepu mobilnego z obsługą logiki koszyka. Dodatkowo zostały obsłużone takie rzeczy jak:
 - Rabaty
